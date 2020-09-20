@@ -7,6 +7,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import ItemDetailContainer from './containers/ItemDetailContainer/ItemDetailContainer';
 import CartContainer from './containers/CartContainer/CartContainer';
 import { CartProvider } from './context/CartContext';
+import PostSale from './containers/PostSale/PostSale';
 
 function App() {
 
@@ -32,6 +33,10 @@ function App() {
 
           <Route path="/cart">
             <CartContainer />
+          </Route>
+
+          <Route path="/postSale">
+            <PostSale />
           </Route>
 
         </Switch>

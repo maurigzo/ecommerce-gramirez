@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useCartContext } from '../../context/CartContext';
 import { Link, NavLink } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
+import UserInfo from '../UserInfo/UserInfo';
 
-function Cart() {
+function Cart({ purchase }) {
+    const [mostrarCheckout, setMostrarCheckout] = useState(false);
+    const { itemList, quantity, getTotal, userInfo, onNameChange, onEmailChange, onPhoneChange, generateOrder} = useCartContext();
 
-    const { itemList, quantity } = useCartContext();
     return <>
         {quantity() > 0 && <div className="row w-100">
             <div className="col-lg-12 col-md-12 col-12">
@@ -22,6 +25,7 @@ function Cart() {
                         </tr>
                     </thead>
                     <tbody>
+
                         {itemList.map(i =>
                             <tr>
                                 <td data-th="Product">
@@ -40,29 +44,45 @@ function Cart() {
                                 </td>
                             </tr>
                         )}
+
                     </tbody>
                 </table>
-                {/* <div className="float-right text-right">
+                <div className="float-right text-right">
                     <h4>Subtotal:</h4>
-                    <h1>{getTotal()}</h1>
-                </div> */}
+                    <h1>{`$` + getTotal()}</h1>
+                </div>
             </div>
         </div>}
+
+        {mostrarCheckout && <UserInfo 
+            userInfo={userInfo}
+            onNameChange={onNameChange}
+            onEmailChange={onEmailChange}
+            onPhoneChange={onPhoneChange} />}
+
+        {mostrarCheckout &&
+        <Link to = {`/postSale`}>
+            <Button size="lg" onClick={() => { generateOrder() }}>Purchase!
+            </Button>
+            </Link>}
+
         {quantity() === 0 &&
             <div className="alert alert-danger" role="alert">
                 You have 0 items in your cart.
                 <br />
                 <NavLink to='/' className="alert-link">Press here to continue shopping.</NavLink>
             </div>}
-        {quantity() > 0 && <div className="row mt-4 d-flex align-items-center">
-            <div className="col-sm-6 order-md-2 text-right">
-                <a href="" className="btn btn-primary mb-4 btn-lg pl-5 pr-5">Checkout</a>
-            </div>
-            <div className="col-sm-6 mb-3 mb-m-1 order-md-1 text-md-left">
-                <Link to='/'>
-                    <i className="fas fa-arrow-left mr-2"></i> Continue Shopping</Link>
-            </div>
-        </div>}
+
+        {quantity() > 0 && !mostrarCheckout &&
+            <div className="row mt-4 d-flex align-items-center">
+                <div className="col-sm-6 order-md-2 text-right">
+                    <Button onClick={() => { setMostrarCheckout(true) }}>Checkout</Button>
+                </div>
+                <div className="col-sm-6 mb-3 mb-m-1 order-md-1 text-md-left">
+                    <Link to='/'>
+                        <i className="fas fa-arrow-left mr-2"></i> Continue Shopping</Link>
+                </div>
+            </div>}
     </>
 };
 
