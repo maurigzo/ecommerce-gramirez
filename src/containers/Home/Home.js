@@ -14,8 +14,8 @@ function Home({ greeting }) {
 
         const itemCollection = db.collection('items');
         const filteredItems = categoryid !== undefined
-            ? itemCollection.where('category', '==', categoryid)
-            : itemCollection;
+            ? itemCollection.where('category', '==', categoryid).orderBy('title')
+            : itemCollection.orderBy('title');
 
         filteredItems.get().then((querySnapshot) => {
             querySnapshot.size === 0 && console.log('No items found');

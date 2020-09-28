@@ -20,13 +20,8 @@ function ItemDetail({ id, title, description, price, image, initial, min, max, a
             <Col md={{ span: 4 }} >
                 <h3>Description</h3>
                 <p>{description}</p>
-                <h3>Details</h3>
-                <ul>
-                    <li>Detail 1</li>
-                    <li>Detail 2</li>
-                    <li>Detail 2</li>
-                    <li>Detail 4</li>
-                </ul>
+                <h1>{`$ ${price}`}</h1>
+                
                 <ItemCount initial={initial} min={min} max={max} showAmount={setAmount} />
                 <br />
                 <Link to={`/cart`}>

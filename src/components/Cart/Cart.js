@@ -1,12 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useCartContext } from '../../context/CartContext';
 import { Link, NavLink } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 import UserInfo from '../UserInfo/UserInfo';
 
-function Cart({ purchase }) {
-    const [mostrarCheckout, setMostrarCheckout] = useState(false);
-    const { itemList, quantity, getTotal, userInfo, onNameChange, onEmailChange, onPhoneChange, generateOrder} = useCartContext();
+function Cart() {
+    const [showCheckout, setShowCheckout] = useState(false);
+    const [isEmailValid, setIsEmailValid] = useState(false);
+    const [emailValidation, setEmailValidation] = useState();
+    const { itemList,
+        quantity,
+        getTotal,
+        userInfo,
+        onNameChange,
+        onEmailChange,
+        onPhoneChange,
+        generateOrder,
+        fieldsCompleted } = useCartContext();
+
+    function onEmailValidationChange(event) {
+        setEmailValidation(event.target.value);
+    };
+
+    useEffect(() => {
+        setIsEmailValid(userInfo.email === emailValidation);
+    }, [emailValidation]);
 
     return <>
         {quantity() > 0 && <div className="row w-100">
@@ -27,7 +45,7 @@ function Cart({ purchase }) {
                     <tbody>
 
                         {itemList.map(i =>
-                            <tr>
+                            <tr key={i.id}>
                                 <td data-th="Product">
                                     <div className="row">
                                         <div className="col-md-3 text-left">
@@ -54,15 +72,17 @@ function Cart({ purchase }) {
             </div>
         </div>}
 
-        {mostrarCheckout && <UserInfo 
+        {showCheckout && <UserInfo
             userInfo={userInfo}
             onNameChange={onNameChange}
             onEmailChange={onEmailChange}
-            onPhoneChange={onPhoneChange} />}
-
-        {mostrarCheckout &&
-        <Link to = {`/postSale`}>
-            <Button size="lg" onClick={() => { generateOrder() }}>Purchase!
+            onPhoneChange={onPhoneChange}
+            isEmailValid={isEmailValid}
+            emailValidation={emailValidation}
+            onEmailValidationChange={onEmailValidationChange} />}
+        {showCheckout && fieldsCompleted() && isEmailValid &&
+            <Link to={`/postSale`}>
+                <Button size="lg" onClick={() => { generateOrder() }}>Purchase!
             </Button>
             </Link>}
 
@@ -73,10 +93,10 @@ function Cart({ purchase }) {
                 <NavLink to='/' className="alert-link">Press here to continue shopping.</NavLink>
             </div>}
 
-        {quantity() > 0 && !mostrarCheckout &&
+        {quantity() > 0 && !showCheckout &&
             <div className="row mt-4 d-flex align-items-center">
                 <div className="col-sm-6 order-md-2 text-right">
-                    <Button onClick={() => { setMostrarCheckout(true) }}>Checkout</Button>
+                    <Button onClick={() => { setShowCheckout(true) }}>Checkout</Button>
                 </div>
                 <div className="col-sm-6 mb-3 mb-m-1 order-md-1 text-md-left">
                     <Link to='/'>

@@ -13,6 +13,7 @@ export function CartProvider({ children }) {
     const [userInfo, setUserInfo] = useState({ name: "", email: "", phone: "" });
     const [orderId, setOrderId] = useState();
     const [loading, setLoading] = useState(true);
+    const [emailValidation, setEmailValidation] = useState("");
 
     function addItem(i) {
         var currentItemIndex = -1;
@@ -57,6 +58,10 @@ export function CartProvider({ children }) {
         setUserInfo({ ...userInfo, phone: event.target.value });
     };
 
+    function onEmailValidationChange(event) {
+        setEmailValidation(event.target.value);
+    }
+
     function generateOrder() {
         const db = getFirestore();
         const orders = db.collection("orders");
@@ -70,15 +75,29 @@ export function CartProvider({ children }) {
         orders.add(newOrder).then(({ id }) => {
             setOrderId(id);
         }).catch(err => {
-            console.log("error :"+ err);
-        }).finally(()=>{
+            console.log("error :" + err);
+        }).finally(() => {
             setLoading(false);
         });
     }
 
+    function fieldsCompleted() {
+       return !(userInfo.name.length===0 || 
+        userInfo.phone.length===0 || 
+        userInfo.email.length===0);
+    }
+
+    function validatedEmail() {
+        console.log("email1: "+ userInfo.email + " email2: "+ emailValidation);
+        console.log("tipos: email1: "+ typeof(userInfo.email) + " email2: "+ typeof(emailValidation));
+        console.log("email valido?: " + userInfo.email === emailValidation);
+
+        return (userInfo.email === emailValidation);
+    }
+
     useEffect(() => {
         const db = getFirestore();
-        const itemCollection = db.collection('items');
+        const itemCollection = db.collection('items').orderBy('title');
         itemCollection.get().then((querySnapshot) => {
             querySnapshot.size === 0 && console.log('No items found');
             setItems(querySnapshot.docs.map(doc => ({ ...doc.data(), id: doc.id })));
@@ -86,8 +105,8 @@ export function CartProvider({ children }) {
     }, []);
 
     return <CartContext.Provider value={{
-        itemList, addItem, quantity: getQuantity, getTotal: getTotal, userInfo,
-        onNameChange, onEmailChange, onPhoneChange, generateOrder, orderId, loading
+        itemList, addItem, quantity: getQuantity, getTotal: getTotal, userInfo, onNameChange, onEmailChange,
+        onPhoneChange, generateOrder, orderId, loading, fieldsCompleted, validatedEmail, onEmailValidationChange
     }}>
         {children}
     </CartContext.Provider>
