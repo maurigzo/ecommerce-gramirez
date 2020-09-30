@@ -3,8 +3,7 @@ import { InputGroup, Form } from 'react-bootstrap';
 import ItemAmountButton from '../../components/ItemAmountButton/ItemAmountButton';
 
 function ItemCount({ initial, min, max, showAmount }) {
-    //revisar
-    const [amount, setAmount] = useState(1);
+    const [amount, setAmount] = useState(initial);
 
     function addItem() {
         amount < max && setAmount(amount +1);
@@ -17,6 +16,10 @@ function ItemCount({ initial, min, max, showAmount }) {
     useEffect(() => {
         showAmount(amount);
     }, [amount]);
+
+    useEffect(() => {
+        setAmount(initial);
+    }, [initial]);
 
     return <div className="form-row justify-content-center" >
         <div className="form-group col-md-4">

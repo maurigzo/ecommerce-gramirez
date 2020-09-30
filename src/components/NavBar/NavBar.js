@@ -11,7 +11,7 @@ const navBarStyle = {
     textAlign: "center"
 }
 
-function NavBar({ appName, categories }) {
+function NavBar({ appName }) {
 
     const { quantity } = useCartContext();
 
