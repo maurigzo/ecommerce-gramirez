@@ -48,10 +48,11 @@ Each component developed must fulfill a single functionality. In case of fulfill
 
 ## External libraries
 
-### Bootstrap
+### [https://react-bootstrap.github.io/](React Bootstrap)
+
 Library used for simpler and more understandable management of styles
 
-### Firebase
+### [https://firebase.google.com/](Firebase)
   
 Library used to be used as a database.
 
