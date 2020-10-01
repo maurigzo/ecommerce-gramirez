@@ -15,7 +15,7 @@ function ItemDetail({ id, title, description, price, image, initial, min, max, a
         </Row>
         <Row>
             <Col md={{ span: 8 }}>
-                <img className="img-responsive" src={image} alt="" />
+                <img className="img-responsive img-rounded" src={image} alt="" style={{height:256, width: 256}}/>
             </Col>
             <Col md={{ span: 4 }} >
                 <h3>Description</h3>

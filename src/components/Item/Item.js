@@ -7,12 +7,12 @@ function Item({ itemId, title, description, price, image}) {
     return <ListGroup.Item as="li">
         <img className="img-responsive img-rounded" src={image} alt="" id="itemImage" />
         <Row>
-            <Col md={{ span: 2, offset: 4 }}>
+            <Col md={{ span: 4, offset: 3 }}>
                 <h3 className="list-group-item-heading" style={{ color: 'black' }}>
                     <Link to={`/item/${itemId}`} >{title}</Link>
                 </h3>
             </Col>
-            <Col md={{ span: 2, offset: 4 }}>
+            <Col md={{ span: 2, offset: 3 }}>
                 <h4><Badge variant="secondary" style={{ background: 'rgba(0,145,0,1)' }}>${`${price}`}</Badge></h4>
             </Col>
         </Row>

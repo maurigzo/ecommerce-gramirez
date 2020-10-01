@@ -21,8 +21,8 @@ function NavBar({ appName }) {
         </Col>
         <Col md="2">
             <DropdownButton alignRight title="Categories" id="dropdown-menu-align-right" >
-            <Dropdown.Item><Link to={`/category/${'A'}`}> Category A</Link></Dropdown.Item>
-            <Dropdown.Item><Link to={`/category/${'B'}`}> Category B</Link></Dropdown.Item>
+            <Dropdown.Item><Link to={`/category/${'Office'}`}> Office</Link></Dropdown.Item>
+            <Dropdown.Item><Link to={`/category/${'Urban'}`}> Urban</Link></Dropdown.Item>
             </DropdownButton>
         </Col>
         <Col md="4">
