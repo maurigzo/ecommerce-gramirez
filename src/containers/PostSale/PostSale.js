@@ -11,8 +11,9 @@ function PostSale (){
     },[]);
     return <div>
     {loading ?
-        <LoadingSpin image={loadingSpin} /> :
-        <h2>{`Here is your order ID: ${orderId}`}</h2>}
+        <LoadingSpin image={loadingSpin} /> :<div>
+        <h2>Successful purchase!</h2>
+        <h2>{`Here is your order ID: ${orderId}`}</h2></div>}
         </div>
 }
 
