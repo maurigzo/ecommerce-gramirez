@@ -5,7 +5,7 @@ import Home from './containers/Home/Home';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import ItemDetailContainer from './containers/ItemDetailContainer/ItemDetailContainer';
-import CartContainer from './containers/CartContainer/CartContainer';
+import Cart from './components/Cart/Cart';
 import { CartProvider } from './context/CartContext';
 import PostSale from './containers/PostSale/PostSale';
 
@@ -20,11 +20,11 @@ function App() {
         <Switch>
 
           <Route exact path="/">
-            <Home greeting="Welcome Customer!" link="https://reactjs.org" />
+            <Home greeting="Welcome Customer!" />
           </Route>
 
           <Route path="/category/:categoryid">
-            <Home greeting="Welcome Customer!" link="https://reactjs.org" />
+            <Home greeting="Welcome Customer!"/>
           </Route>
 
           <Route path="/item/:id">
@@ -32,7 +32,7 @@ function App() {
           </Route>
 
           <Route path="/cart">
-            <CartContainer />
+            <Cart />
           </Route>
 
           <Route path="/postSale">
