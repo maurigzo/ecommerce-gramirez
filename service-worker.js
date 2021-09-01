@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/ecommerce-gramirez/precache-manifest.ccd8b9665e8a7dde1c0d4c63265baaaf.js"
+  "/ecommerce-gramirez/precache-manifest.66617acd36ce5e5c31ad3f8944362d39.js"
 );
 
 self.addEventListener('message', (event) => {
