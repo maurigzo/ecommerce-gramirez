@@ -1,5 +1,6 @@
 {
-  "name": "ecommerce-gramirez",
+  "homepage":"https://maurigzo.github.io/ecommerce-gramirez",
+    "name": "ecommerce-gramirez",
   "version": "0.1.0",
   "engines": {
     "node": "14.x"
@@ -21,9 +22,10 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -39,5 +41,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^3.2.3"
   }
 }

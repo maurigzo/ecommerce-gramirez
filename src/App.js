@@ -15,7 +15,7 @@ function App() {
 
   return <CartProvider>
     <div className="App" >
-      <BrowserRouter>
+      <BrowserRouter basename={process.env.PUBLIC_URL}>
         <NavBar appName="Ecommerce-Gramirez" categories= {categories}/>
         <Switch>
 
