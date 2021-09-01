@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/ecommerce-gramirez/static/css/main.6f0bc612.chunk.css",
+    "main.js": "/ecommerce-gramirez/static/js/main.538df2d0.chunk.js",
+    "main.js.map": "/ecommerce-gramirez/static/js/main.538df2d0.chunk.js.map",
+    "runtime-main.js": "/ecommerce-gramirez/static/js/runtime-main.efb1ff33.js",
+    "runtime-main.js.map": "/ecommerce-gramirez/static/js/runtime-main.efb1ff33.js.map",
+    "static/css/2.11829350.chunk.css": "/ecommerce-gramirez/static/css/2.11829350.chunk.css",
+    "static/js/2.5ddcb636.chunk.js": "/ecommerce-gramirez/static/js/2.5ddcb636.chunk.js",
+    "static/js/2.5ddcb636.chunk.js.map": "/ecommerce-gramirez/static/js/2.5ddcb636.chunk.js.map",
+    "index.html": "/ecommerce-gramirez/index.html",
+    "precache-manifest.ccd8b9665e8a7dde1c0d4c63265baaaf.js": "/ecommerce-gramirez/precache-manifest.ccd8b9665e8a7dde1c0d4c63265baaaf.js",
+    "service-worker.js": "/ecommerce-gramirez/service-worker.js",
+    "static/css/2.11829350.chunk.css.map": "/ecommerce-gramirez/static/css/2.11829350.chunk.css.map",
+    "static/css/main.6f0bc612.chunk.css.map": "/ecommerce-gramirez/static/css/main.6f0bc612.chunk.css.map",
+    "static/js/2.5ddcb636.chunk.js.LICENSE.txt": "/ecommerce-gramirez/static/js/2.5ddcb636.chunk.js.LICENSE.txt",
+    "static/media/CartIcon.svg": "/ecommerce-gramirez/static/media/CartIcon.cd22f79e.svg",
+    "static/media/loadingSpin.svg": "/ecommerce-gramirez/static/media/loadingSpin.4135c94e.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.efb1ff33.js",
+    "static/css/2.11829350.chunk.css",
+    "static/js/2.5ddcb636.chunk.js",
+    "static/css/main.6f0bc612.chunk.css",
+    "static/js/main.538df2d0.chunk.js"
+  ]
+}
